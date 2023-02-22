@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -67,6 +68,23 @@ public class SpecialOfferController {
 
 		return "redirect:/pizzas";
 
+	}
+
+	@GetMapping("/edit/{id}")
+	public String edit(@PathVariable("id") Long id, Model model) {
+		SpecialOffer specialOffer = specialOfferRepository.getReferenceById(id);
+		if (specialOffer == null) {
+			throw new RuntimeException("SpecialOffer not found");
+		}
+		model.addAttribute("specialOffer", specialOffer);
+		return "special-offer/edit";
+	}
+
+	@PostMapping("/update")
+	public String update(@RequestParam("pizzaId") String name,
+			@ModelAttribute("specialOffer") SpecialOffer specialOffer) {
+		specialOfferRepository.save(specialOffer);
+		return "redirect:/pizzas";
 	}
 
 	// redirectAttributes.addAttribute("id", pizzaId);

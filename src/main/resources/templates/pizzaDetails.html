@@ -33,15 +33,19 @@
 						<div class="mt-4">
 							<h3>Offerte speciali:</h3>
 							<ul>
-								<li th:each="specialOffer : ${pizza.specialOffer}"><span
-									th:text="${specialOffer.title}"></span></li>
+								<li th:each="specialOffer : ${pizza.specialOffer}"><a
+									th:href="@{/special-offer/edit/{id}(id=${specialOffer.id})}">
+										<span th:text="${specialOffer.title}"></span>
+								</a> <span
+									th:text="' dal ' + ${#temporals.format(specialOffer.startDate, 'dd/MM/yyyy')} + ' al ' + ${#temporals.format(specialOffer.endDate, 'dd/MM/yyyy')}"></span>
+								</li>
+
 							</ul>
 							<a class="btn btn-success mt-3"
-								
 								th:href="@{|/special-offer/create?pizzaId=${pizza.id}|}">Crea
 								nuova offerta speciale</a>
-
 						</div>
+
 					</div>
 				</div>
 
