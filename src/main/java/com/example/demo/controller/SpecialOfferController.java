@@ -83,6 +83,12 @@ public class SpecialOfferController {
 	@PostMapping("/update")
 	public String update(@RequestParam("pizzaId") String name,
 			@ModelAttribute("specialOffer") SpecialOffer specialOffer) {
+
+		Integer pizzaId = (int) Long.parseLong(name);
+		Pizza pizza = pizzaRepository.getReferenceById(pizzaId);
+
+		specialOffer.setPizza(pizza);
+
 		specialOfferRepository.save(specialOffer);
 		return "redirect:/pizzas";
 	}
