@@ -1,12 +1,14 @@
 package com.example.demo.model;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.NotEmpty;
@@ -32,6 +34,9 @@ public class Pizza {
 	@NotNull(message = "Il prezzo non può essere vuoto")
 	@DecimalMin(value = "0.01", message = "Il prezzo deve essere maggiore di zero")
 	private BigDecimal price;
+
+	@OneToMany(mappedBy = "pizza")
+	private List<SpecialOffer> specialOffer;
 
 	public String getName() {
 		return name;
@@ -71,6 +76,14 @@ public class Pizza {
 
 	public Integer getId() {
 		return id;
+	}
+
+	public List<SpecialOffer> getSpecialOffer() {
+		return specialOffer;
+	}
+
+	public void setSpecialOffer(List<SpecialOffer> specialOffer) {
+		this.specialOffer = specialOffer;
 	}
 
 }

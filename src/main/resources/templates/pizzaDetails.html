@@ -5,8 +5,7 @@
 <title>Dettagli Pizza</title>
 <link rel="stylesheet"
 	th:href="@{/webjars/bootstrap/5.2.3/css/bootstrap.min.css}" />
-	<link rel="stylesheet"
-	th:href="@{/css/main.css}" />
+<link rel="stylesheet" th:href="@{/css/main.css}" />
 </head>
 <body class="vs-bg-custom vs-fixed-height-100">
 	<div class="container mt-5">
@@ -31,8 +30,21 @@
 								Elimina Pizza</button>
 						</form>
 
+						<div class="mt-4">
+							<h3>Offerte speciali:</h3>
+							<ul>
+								<li th:each="specialOffer : ${pizza.specialOffer}"><span
+									th:text="${specialOffer.title}"></span></li>
+							</ul>
+							<a class="btn btn-success mt-3"
+								
+								th:href="@{|/special-offer/create?pizzaId=${pizza.id}|}">Crea
+								nuova offerta speciale</a>
+
+						</div>
 					</div>
 				</div>
+
 			</div>
 		</div>
 
