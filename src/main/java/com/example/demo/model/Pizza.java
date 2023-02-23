@@ -8,6 +8,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.DecimalMin;
@@ -37,6 +38,9 @@ public class Pizza {
 
 	@OneToMany(mappedBy = "pizza")
 	private List<SpecialOffer> specialOffer;
+
+	@ManyToMany(mappedBy = "ingredient")
+	private List<Ingredient> ingredients;
 
 	public String getName() {
 		return name;
@@ -84,6 +88,14 @@ public class Pizza {
 
 	public void setSpecialOffer(List<SpecialOffer> specialOffer) {
 		this.specialOffer = specialOffer;
+	}
+
+	public List<Ingredient> getIngredients() {
+		return ingredients;
+	}
+
+	public void setIngredients(List<Ingredient> ingredients) {
+		this.ingredients = ingredients;
 	}
 
 }
