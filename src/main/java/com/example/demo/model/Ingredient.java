@@ -20,7 +20,7 @@ public class Ingredient {
 	@NotNull(message = "Il nome non può essere vuoto!")
 	private String title;
 
-	@ManyToMany
+	@ManyToMany(mappedBy = "ingredients")
 	private List<Pizza> pizzas;
 
 	@Override

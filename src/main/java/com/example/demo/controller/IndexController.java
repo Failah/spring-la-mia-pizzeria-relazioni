@@ -80,12 +80,12 @@ public class IndexController {
 
 	@PostMapping("/pizzas/new-pizza")
 	public String store(@Valid @ModelAttribute("pizza") Pizza pizzaForm, BindingResult bindingResult, Model model) {
-		System.out.println(pizzaForm.toString());
-		System.out.println(bindingResult.toString());
+
 		if (bindingResult.hasErrors()) {
 			return "new-pizza";
 		}
-
+		// pizzaForm.getIngredients().forEach(i -> i.getPizzas().add(pizzaForm));
+		// System.out.println(pizzaForm.getIngredients());
 		pizzaRepository.save(pizzaForm);
 		return "redirect:/pizzas";
 	}

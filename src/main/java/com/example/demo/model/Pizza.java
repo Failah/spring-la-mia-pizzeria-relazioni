@@ -39,7 +39,7 @@ public class Pizza {
 	@OneToMany(mappedBy = "pizza")
 	private List<SpecialOffer> specialOffer;
 
-	@ManyToMany(mappedBy = "pizzas")
+	@ManyToMany
 	private List<Ingredient> ingredients;
 
 	public String getName() {
