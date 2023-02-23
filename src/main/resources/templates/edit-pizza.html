@@ -8,8 +8,9 @@
 <link rel="stylesheet" th:href="@{/css/main.css}" />
 </head>
 <body class="vs-bg-custom vs-fixed-height-100 text-white">
+<div th:replace="~{fragments :: navbar}"></div>
 	<div class="container my-5 py-5">
-		<h1 class="mt-5 mb-4 text-center vs-form-padding">Modifica Pizza</h1>
+		<h1 class="mb-4 text-center vs-form-padding">Modifica Pizza</h1>
 		<form th:action="@{/pizzas/edit/{id}(id=${pizza.id})}"
 			th:object="${pizza}" method="post">
 			<ul>

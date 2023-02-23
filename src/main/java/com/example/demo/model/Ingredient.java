@@ -14,7 +14,7 @@ import jakarta.validation.constraints.NotNull;
 @Table(name = "ingredients")
 public class Ingredient {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 
 	@NotNull(message = "Il nome non può essere vuoto!")
