@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.example.demo.model.Ingredient;
 import com.example.demo.model.Pizza;
+import com.example.demo.repository.IngredientRepository;
 import com.example.demo.repository.PizzaRepository;
 
 import jakarta.validation.Valid;
@@ -23,6 +25,9 @@ import jakarta.validation.Valid;
 public class IndexController {
 	@Autowired
 	private PizzaRepository pizzaRepository;
+
+	@Autowired
+	private IngredientRepository ingredientRepository;
 
 	@GetMapping("/")
 	public String index(Model model) {
@@ -48,6 +53,7 @@ public class IndexController {
 		Pizza pizza = getPizzaById(id);
 		if (pizza != null) {
 			model.addAttribute("pizza", pizza);
+			model.addAttribute("ingredients", pizza.getIngredients()); // Aggiunta della lista di ingredienti al modello
 			return "pizzaDetails";
 		} else {
 			return "redirect:/";
@@ -66,6 +72,8 @@ public class IndexController {
 
 	@GetMapping("/pizzas/new-pizza")
 	public String create(Model model) {
+		List<Ingredient> ingredients = ingredientRepository.findAll();
+		model.addAttribute("ingredients", ingredients);
 		model.addAttribute("pizza", new Pizza());
 		return "new-pizza";
 	}
@@ -77,6 +85,7 @@ public class IndexController {
 		if (bindingResult.hasErrors()) {
 			return "new-pizza";
 		}
+
 		pizzaRepository.save(pizzaForm);
 		return "redirect:/pizzas";
 	}
@@ -84,6 +93,8 @@ public class IndexController {
 	@GetMapping("/pizzas/edit/{id}")
 	public String edit(@PathVariable("id") Integer id, Model model) {
 		Pizza pizza = pizzaRepository.getReferenceById(id);
+		model.addAttribute("ingredients", ingredientRepository.findAll());
+
 		model.addAttribute("pizza", pizza);
 		return "edit-pizza";
 	}
@@ -93,6 +104,7 @@ public class IndexController {
 		if (bindingResult.hasErrors()) {
 			return "edit-pizza";
 		}
+
 		pizzaRepository.save(pizzaForm);
 		return "redirect:/pizzas";
 	}

@@ -9,6 +9,9 @@
 	th:href="@{/css/main.css}" />
 </head>
 <body class="vs-bg-custom vs-fixed-height-100">
+
+<div th:replace="~{fragments :: navbar}"></div>
+
 	<div class="container mt-5 bg-light p-4 vs-fixed-height-80 vs-border">
 		<h1 class="mt-2 mb-4 text-center">La mia pizzeria!</h1>
 
@@ -50,7 +53,7 @@
 				</div>
 			</div>
 		</div>
-		<div th:fragment="back" class="mt-5 text-center">
+		<div class="mt-5 text-center">
 			<a th:href="@{/pizzas/new-pizza}" class="btn btn-primary btn-block">Crea una Pizza</a>
 		</div>
 	</div>

@@ -1,5 +1,7 @@
 package com.example.demo.model;
 
+import java.util.List;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -19,7 +21,12 @@ public class Ingredient {
 	private String title;
 
 	@ManyToMany
-	private Pizza pizza;
+	private List<Pizza> pizzas;
+
+	@Override
+	public String toString() {
+		return "Ingredient [id=" + id + ", title=" + title + ", pizzas=" + pizzas + "]";
+	}
 
 	public Integer getId() {
 		return id;
@@ -37,12 +44,12 @@ public class Ingredient {
 		this.title = title;
 	}
 
-	public Pizza getPizza() {
-		return pizza;
+	public List<Pizza> getPizzas() {
+		return pizzas;
 	}
 
-	public void setPizza(Pizza pizza) {
-		this.pizza = pizza;
+	public void setPizzas(List<Pizza> pizzas) {
+		this.pizzas = pizzas;
 	}
 
 }
