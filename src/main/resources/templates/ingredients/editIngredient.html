@@ -15,11 +15,21 @@
 			<form method="post"
 				th:action="@{/ingredients/edit/{id}(id=${ingredient.id})}">
 				<div class="form-group mb-3">
-					<label class="pb-2 pt-2" for="title">Nome</label> <input type="text"
-						class="form-control" id="title" name="title"
+					<label class="pb-2 pt-2" for="title">Nome</label> <input
+						type="text" class="form-control" id="title" name="title"
 						th:value="${ingredient.title}" />
 				</div>
-				<button type="submit" class="btn btn-primary">Salva</button>
+				<div>
+					<button type="submit" class="btn btn-success mt-2 vs-inline-block vs-mt-7px">Salva</button>
+					<div class="vs-inline-block">
+						<a th:href="@{/ingredients}" class="btn btn-primary btn-block">Torna
+							all'elenco ingredienti</a>
+					</div>
+					<div class="vs-inline-block">
+						<a th:href="@{/pizzas}" class="btn btn-primary btn-block">Torna
+							all'elenco pizze</a>
+					</div>
+				</div>
 			</form>
 		</div>
 	</div>

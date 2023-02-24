@@ -53,3 +53,15 @@
     justify-content: center;
     height: 80%;
 }
+
+.vs-text-grey {
+	color: #c3c3c3;
+}
+
+.vs-mt-7px {
+	margin-bottom: 7px;
+}
+
+.vs-inline-block {
+	display: inline-block;
+}

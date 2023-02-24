@@ -9,8 +9,9 @@
 	th:href="@{/css/main.css}" />
 </head>
 <body class="vs-bg-custom vs-fixed-height-100 text-white">
+<div th:replace="~{fragments :: navbar}"></div>
 	<div class="container my-5 py-5">
-		<h1 class="mt-5 mb-4 text-center vs-form-padding">Aggiungi una nuova pizza</h1>
+		<h1 class="mb-4 text-center vs-form-padding">Aggiungi una nuova pizza</h1>
 		<form th:action="@{/pizzas/new-pizza}" th:object="${pizza}"
 			method="post">
 			<ul>
@@ -52,9 +53,9 @@
 				</div>
 			</div>
 			
-			<div class="col-4">
-	  			<h3>Ingredienti</h3>
-	  			<div th:each="ingredient : ${ingredients}" class="form-check">
+			<div class="col-12 row mt-4">
+	  			<h3 class="col-12">Ingredienti</h3>
+	  			<div th:each="ingredient : ${ingredients}" class="form-check col-2 ms-3">
 	  				<input type="checkbox" class="form-check-input" 
 	  					th:value="${ingredient.id}" th:field="*{ingredients}"
 	  					th:id="|ingredient_${ingredient.id}">
