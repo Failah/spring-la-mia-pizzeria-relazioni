@@ -82,6 +82,8 @@ public class IndexController {
 	public String store(@Valid @ModelAttribute("pizza") Pizza pizzaForm, BindingResult bindingResult, Model model) {
 
 		if (bindingResult.hasErrors()) {
+			List<Ingredient> ingredients = ingredientRepository.findAll();
+			model.addAttribute("ingredients", ingredients);
 			return "new-pizza";
 		}
 		// pizzaForm.getIngredients().forEach(i -> i.getPizzas().add(pizzaForm));
@@ -102,6 +104,8 @@ public class IndexController {
 	@PostMapping("/pizzas/edit/{id}")
 	public String update(@Valid @ModelAttribute("pizza") Pizza pizzaForm, BindingResult bindingResult, Model model) {
 		if (bindingResult.hasErrors()) {
+			List<Ingredient> ingredients = ingredientRepository.findAll();
+			model.addAttribute("ingredients", ingredients);
 			return "edit-pizza";
 		}
 
