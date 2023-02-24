@@ -3,6 +3,7 @@ package com.example.demo.model;
 import java.math.BigDecimal;
 import java.util.List;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -36,7 +37,7 @@ public class Pizza {
 	@DecimalMin(value = "0.01", message = "Il prezzo deve essere maggiore di zero")
 	private BigDecimal price;
 
-	@OneToMany(mappedBy = "pizza")
+	@OneToMany(mappedBy = "pizza", cascade = CascadeType.ALL)
 	private List<SpecialOffer> specialOffer;
 
 	@ManyToMany

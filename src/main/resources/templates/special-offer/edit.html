@@ -8,8 +8,8 @@
 </head>
 <body class="vs-bg-custom vs-fixed-height-100">
 <div th:replace="~{fragments :: navbar}"></div>
-    <div class="container mt-5 bg-light p-4 vs-fixed-height-80 vs-border">
-        <h1 class="mt-5 mb-4 text-center">Modifica offerta speciale</h1>
+    <div class="container my-5 py-5 text-white">
+        <h1 class="mt-5 mb-4 pt-5 text-center">Modifica offerta speciale</h1>
         <div class="row justify-content-center">
             <div class="col-lg-6">
                 <form th:object="${specialOffer}" th:action="@{/special-offer/update}" method="post">
@@ -32,7 +32,7 @@
                         <input type="date" class="form-control" id="endDate" th:field="*{endDate}" />
                     </div>
 
-                    <button type="submit" class="btn btn-primary">Salva</button>
+                    <button type="submit" class="btn btn-success">Salva</button>
                     <a href="/pizzas" class="btn btn-secondary">Annulla</a>
                 </form>
             </div>

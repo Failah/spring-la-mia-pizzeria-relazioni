@@ -5,11 +5,12 @@
 <title>La mia Pizzeria</title>
 <link rel="stylesheet"
 	th:href="@{/webjars/bootstrap/5.2.3/css/bootstrap.min.css}" />
+<link rel="stylesheet" th:href="@{/css/main.css}" />
 </head>
-<body>
+<body class="vs-bg-homepage vs-fixed-height-100">
 	<div class="container mt-5">
-		<h1 class="mt-5 mb-4 text-center">
-		<a th:href="@{/pizzas}" class="btn btn-primary btn-block">
+		<h1 class="mt-5 mb-4 text-center vs-index-button-position">
+		<a th:href="@{/pizzas}" class="btn btn-light btn-block">
 		La mia pizzeria!
 		</a>
 		</h1>
